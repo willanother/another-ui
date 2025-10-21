@@ -7,7 +7,10 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "registry:build": "shadcn build"
+    "echo": "cross-env-shell echo latest version: $npm_package_version",
+    "build:registry": "npm run build:registry:latest && npm run build:registry:tag",
+    "build:registry:tag": "cross-env-shell npx shadcn build -o public/registry/v$npm_package_version",
+    "build:registry:latest": "npx shadcn build -o public/registry/latest"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

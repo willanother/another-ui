@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hello-another",
+  "type": "registry:component",
+  "title": "Hello Another",
+  "description": "A simple hello another component.",
+  "files": [
+    {
+      "path": "registry/components/hello-another.tsx",
+      "content": "import { Button } from '@/components/ui/button';\r\n\r\nexport default function HelloAnother() {\r\n  return <Button>Hello Another</Button>;\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}
