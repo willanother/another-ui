@@ -4,17 +4,30 @@
   "homepage": "https://another-ui.com",
   "items": [
     {
-      "name": "animate-button",
+      "name": "press-effect",
       "type": "registry:component",
-      "title": "animate button",
-      "description": "shadcn ui button with motion animate",
+      "title": "press effect",
+      "description": "press effect by motion animate",
       "dependencies": ["motion@^12"],
-      "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/components/animate-button.tsx",
+          "path": "registry/components/press-effect.tsx",
           "type": "registry:component",
-          "target": "src/components/another-ui/animate-button.tsx"
+          "target": "src/components/another-ui/press-effect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-effect",
+      "type": "registry:component",
+      "title": "slide effect",
+      "description": "slide effect by motion animate",
+      "dependencies": ["motion@^12"],
+      "files": [
+        {
+          "path": "registry/components/slide-effect.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/slide-effect.tsx"
         }
       ]
     }
