@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "another-ui",
+  "homepage": "https://another-ui.com",
+  "items": [
+    {
+      "name": "hello-world",
+      "type": "registry:component",
+      "title": "Hello World",
+      "description": "A simple hello world component.",
+      "files": [
+        {
+          "path": "registry/components/hello-world.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hello-another",
+      "type": "registry:component",
+      "title": "Hello Another",
+      "description": "A simple hello another component.",
+      "files": [
+        {
+          "path": "registry/components/hello-another.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
