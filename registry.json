@@ -8,11 +8,13 @@
       "type": "registry:component",
       "title": "animate button",
       "description": "shadcn ui button with motion animate",
-      "registryDependencies": ["button", "motion@12.23.24"],
+      "dependencies": ["motion@^12"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/components/animate-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/another-ui/animate-button.tsx"
         }
       ]
     }

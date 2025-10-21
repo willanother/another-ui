@@ -1,8 +1,10 @@
+'use client';
+
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { VariantProps } from 'class-variance-authority';
 import { HTMLMotionProps } from 'motion/react';
-import * as motion from 'motion/react-client';
+import { motion } from 'motion/react';
 
 export default function AnimateButton({
   className,
