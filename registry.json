@@ -4,25 +4,14 @@
   "homepage": "https://another-ui.com",
   "items": [
     {
-      "name": "hello-world",
+      "name": "animate-button",
       "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component.",
+      "title": "animate button",
+      "description": "shadcn ui button with motion animate",
+      "registryDependencies": ["button", "motion@12.23.24"],
       "files": [
         {
-          "path": "registry/components/hello-world.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "hello-another",
-      "type": "registry:component",
-      "title": "Hello Another",
-      "description": "A simple hello another component.",
-      "files": [
-        {
-          "path": "registry/components/hello-another.tsx",
+          "path": "registry/components/animate-button.tsx",
           "type": "registry:component"
         }
       ]
