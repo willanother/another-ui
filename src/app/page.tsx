@@ -6,6 +6,7 @@ import { GradientText } from '$/registry/components/gradient-text';
 import { ClipPathWrapper } from '$/registry/components/clip-path-wrapper';
 import { ClientIsolate } from '$/registry/components/client-isolate';
 import { RippleEffect } from '$/registry/components/ripple-effect';
+import { BoxReveal } from '$/registry/components/box-reveal';
 
 export default function Home() {
   return (
@@ -27,20 +28,28 @@ export default function Home() {
       <GradientText className="text-3xl font-bold" text="Gradient Text" />
       <GradientText className="text-3xl font-bold" text="Gradient Text" neon />
       <div className="g-container bg-black!"></div>
+      {/* eslint-disable-next-line */}
+      <img
+        className="w-full h-auto [clip-path:path('M100_0L200_100L100_200L0_100Z')]"
+        src="https://api.xsot.cn/bing?jump=true"
+      />
       <ClientIsolate>
         <ClipPathWrapper>
+          {/* eslint-disable-next-line */}
           <img
             className="w-full h-auto"
             src="https://api.xsot.cn/bing?jump=true"
           />
         </ClipPathWrapper>
       </ClientIsolate>
-
       <PressEffect>
         <RippleEffect>
           <Button>RippleEffect</Button>
         </RippleEffect>
       </PressEffect>
+      <BoxReveal className="[--box-color:red]">
+        <GradientText className="text-3xl font-bold" text="Gradient Text" />
+      </BoxReveal>
     </div>
   );
 }

@@ -116,6 +116,7 @@
       "type": "registry:component",
       "title": "gradient text",
       "description": "gradient text by motion animate",
+      "dependencies": ["motion@^12"],
       "files": [
         {
           "path": "registry/components/gradient-text.tsx",
@@ -148,6 +149,20 @@
           "path": "registry/components/clip-path-wrapper.tsx",
           "type": "registry:component",
           "target": "src/components/another-ui/clip-path-wrapper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "box-reveal",
+      "type": "registry:component",
+      "title": "box reveal",
+      "description": "box reveal by motion animate",
+      "dependencies": ["motion@^12"],
+      "files": [
+        {
+          "path": "registry/components/box-reveal.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/box-reveal.tsx"
         }
       ]
     }

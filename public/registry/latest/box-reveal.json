@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "box-reveal",
+  "type": "registry:component",
+  "title": "box reveal",
+  "description": "box reveal by motion animate",
+  "dependencies": [
+    "motion@^12"
+  ],
+  "files": [
+    {
+      "path": "registry/components/box-reveal.tsx",
+      "content": "'use client';\r\n\r\nimport { cn } from '@/lib/utils';\r\nimport { motion, useAnimation } from 'motion/react';\r\nimport React from 'react';\r\n\r\ntype BoxRevealProps = {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n  duration?: number;\r\n  boxColor?: string;\r\n  once?: boolean;\r\n};\r\n\r\nfunction BoxReveal({\r\n  children,\r\n  className,\r\n  duration,\r\n  boxColor = '#5046e6',\r\n  once = false\r\n}: BoxRevealProps) {\r\n  const mainControls = useAnimation();\r\n  const slideControls = useAnimation();\r\n\r\n  return (\r\n    <div className={cn('relative overflow-hidden', className)}>\r\n      <motion.div\r\n        variants={{\r\n          hidden: { opacity: 1, y: '100%' },\r\n          visible: { opacity: 1, y: 0 }\r\n        }}\r\n        initial=\"hidden\"\r\n        animate={mainControls}\r\n        transition={{ duration: duration ? duration : 0.5, delay: 0.25 }}\r\n        viewport={{ once: once }}\r\n        onViewportEnter={() => {\r\n          mainControls.start('visible');\r\n        }}\r\n        onViewportLeave={() => {\r\n          mainControls.stop();\r\n          mainControls.set('hidden');\r\n        }}\r\n      >\r\n        {children}\r\n      </motion.div>\r\n\r\n      <motion.div\r\n        variants={{\r\n          hidden: { left: 0 },\r\n          visible: { left: '100%' }\r\n        }}\r\n        initial=\"hidden\"\r\n        animate={slideControls}\r\n        transition={{ duration: duration ? duration : 0.5, ease: 'easeIn' }}\r\n        viewport={{ once: once }}\r\n        onViewportEnter={() => {\r\n          slideControls.start('visible');\r\n        }}\r\n        onViewportLeave={() => {\r\n          slideControls.stop();\r\n          slideControls.set('hidden');\r\n        }}\r\n        style={{\r\n          position: 'absolute',\r\n          top: 0,\r\n          bottom: 0,\r\n          left: 0,\r\n          right: 0,\r\n          zIndex: 20,\r\n          background: `var(--box-color, ${boxColor})`\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { BoxReveal, type BoxRevealProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/box-reveal.tsx"
+    }
+  ]
+}

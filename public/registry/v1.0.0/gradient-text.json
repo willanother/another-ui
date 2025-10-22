@@ -4,6 +4,9 @@
   "type": "registry:component",
   "title": "gradient text",
   "description": "gradient text by motion animate",
+  "dependencies": [
+    "motion@^12"
+  ],
   "files": [
     {
       "path": "registry/components/gradient-text.tsx",
