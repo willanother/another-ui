@@ -3,22 +3,17 @@
 import { HTMLMotionProps } from 'motion/react';
 import { PropsWithChildren } from 'react';
 import { motion } from 'motion/react';
-
-export default function SlideEffect({
+export default function FadeEffect({
   children,
-  from = 'left',
   delay = 0,
   once = true,
   ...props
 }: HTMLMotionProps<'div'> &
   PropsWithChildren & {
-    from?: 'left' | 'right' | 'top' | 'bottom';
     delay?: number;
     once?: boolean;
   }) {
   const initial = {
-    x: from === 'left' ? '-100%' : from === 'right' ? '100%' : 0,
-    y: from === 'top' ? '-100%' : from === 'bottom' ? '100%' : 0,
     opacity: 0
   };
   const end = {

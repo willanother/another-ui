@@ -1,4 +1,3 @@
-import { Marquee } from '$/registry/components/marquee';
 import PressEffect from '$/registry/components/press-effect';
 import SlideEffect from '$/registry/components/slide-effect';
 import { Button } from '@/components/ui/button';
@@ -15,22 +14,12 @@ export default function Home() {
           <Button>Aschild</Button>
         </PressEffect>
       </SlideEffect>
-      <div className="bg-red-400 h-96"></div>
-      <div className="bg-amber-400 h-96"></div>
-      <div className="bg-red-400 h-96"></div>
-      <div className="bg-amber-400 h-96"></div>
-      <div className="bg-red-400 h-96"></div>
-      <div className="bg-amber-400 h-96"></div>
       <SlideEffect delay={0.5} once={false} from="bottom">
         <PressEffect>
           <Button>Aschild</Button>
-        </PressEffect>
+        </PressEffect> 
       </SlideEffect>
-      {/* <SlideEffect delay={0.5}> */}
-      <div className="overflow-hidden">
-        <MarqueeDemo />
-      </div>
-      {/* </SlideEffect> */}
+      <MarqueeDemo />
     </div>
   );
 }

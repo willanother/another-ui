@@ -1,5 +1,5 @@
  @theme inline {
- 	--animate-marquee: marquee-horizontal var(--duration) infinite linear;
+ 	--animate-marquee-horizontal: marquee-horizontal var(--duration) infinite linear;
  	--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
  }
 

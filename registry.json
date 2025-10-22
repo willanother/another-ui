@@ -30,6 +30,57 @@
           "target": "src/components/another-ui/slide-effect.tsx"
         }
       ]
+    },
+    {
+      "name": "fade-effect",
+      "type": "registry:component",
+      "title": "fade effect",
+      "description": "fade effect by motion animate",
+      "dependencies": ["motion@^12"],
+      "files": [
+        {
+          "path": "registry/components/fade-effect.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/fade-effect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:component",
+      "title": "marquee",
+      "description": "marquee component by css",
+      "files": [
+        {
+          "path": "registry/components/marquee.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/marquee.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-marquee-horizontal": "marquee-horizontal var(--duration) infinite linear",
+          "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes marquee-horizontal": {
+          "from": {
+            "transform": "translateX(0)"
+          },
+          "to": {
+            "transform": "translateX(calc(-100% - var(--gap)))"
+          }
+        },
+        "@keyframes marquee-vertical": {
+          "from": {
+            "transform": "translateY(0)"
+          },
+          "to": {
+            "transform": "translateY(calc(-100% - var(--gap)))"
+          }
+        }
+      }
     }
   ]
 }

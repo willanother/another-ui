@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:component",
+  "title": "marquee",
+  "description": "marquee component by css",
+  "files": [
+    {
+      "path": "registry/components/marquee.tsx",
+      "content": "import { ComponentPropsWithoutRef } from 'react';\r\n\r\nimport { cn } from '@/lib/utils';\r\n\r\nexport function Marquee({\r\n  className,\r\n  reverse = false,\r\n  pauseOnHover = false,\r\n  children,\r\n  vertical = false,\r\n  repeat = 4,\r\n  ...props\r\n}: ComponentPropsWithoutRef<'div'> & {\r\n  className?: string;\r\n  reverse?: boolean;\r\n  pauseOnHover?: boolean;\r\n  children: React.ReactNode;\r\n  vertical?: boolean;\r\n  repeat?: number;\r\n}) {\r\n  return (\r\n    <div\r\n      {...props}\r\n      className={cn(\r\n        '[--duration:20s] [--gap:1rem] group flex gap-(--gap) overflow-hidden',\r\n        vertical ? 'flex-col' : 'flex-row',\r\n        className\r\n      )}\r\n    >\r\n      {Array(repeat)\r\n        .fill(0)\r\n        .map((_, i) => (\r\n          <div\r\n            key={i}\r\n            className={cn(\r\n              'flex shrink-0 justify-around gap-(--gap)',\r\n              vertical\r\n                ? 'animate-marquee-vertical flex-col'\r\n                : 'animate-marquee-horizontal flex-row',\r\n              {\r\n                'group-hover:paused': pauseOnHover,\r\n                '[animation-direction:reverse]': reverse\r\n              }\r\n            )}\r\n          >\r\n            {children}\r\n          </div>\r\n        ))}\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/marquee.tsx"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-marquee-horizontal": "marquee-horizontal var(--duration) infinite linear",
+      "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes marquee-horizontal": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes marquee-vertical": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(calc(-100% - var(--gap)))"
+      }
+    }
+  }
+}
