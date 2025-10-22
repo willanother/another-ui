@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "client-isolate",
+  "type": "registry:component",
+  "title": "client isolate",
+  "description": "client isolate component",
+  "files": [
+    {
+      "path": "registry/components/client-isolate.tsx",
+      "content": "'use client';\r\n\r\nimport { PropsWithChildren, useEffect, useState } from 'react';\r\ntype ClientIsolateProps = {\r\n  suspense?: React.ReactNode;\r\n} & PropsWithChildren;\r\n\r\nfunction ClientIsolate({ children, suspense }: ClientIsolateProps) {\r\n  const [isClient, setIsClient] = useState(false);\r\n  useEffect(() => {\r\n    setIsClient(true);\r\n  }, []);\r\n  return isClient ? children : suspense;\r\n}\r\n\r\nexport { ClientIsolate, type ClientIsolateProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/client-isolate.tsx"
+    }
+  ]
+}

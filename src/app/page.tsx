@@ -1,7 +1,11 @@
-import PressEffect from '$/registry/components/press-effect';
-import SlideEffect from '$/registry/components/slide-effect';
+import { PressEffect } from '$/registry/components/press-effect';
+import { SlideEffect } from '$/registry/components/slide-effect';
 import { Button } from '@/components/ui/button';
 import MarqueeDemo from './marquee-demo';
+import { GradientText } from '$/registry/components/gradient-text';
+import { ClipPathWrapper } from '$/registry/components/clip-path-wrapper';
+import { ClientIsolate } from '$/registry/components/client-isolate';
+import { RippleEffect } from '$/registry/components/ripple-effect';
 
 export default function Home() {
   return (
@@ -17,9 +21,26 @@ export default function Home() {
       <SlideEffect delay={0.5} once={false} from="bottom">
         <PressEffect>
           <Button>Aschild</Button>
-        </PressEffect> 
+        </PressEffect>
       </SlideEffect>
       <MarqueeDemo />
+      <GradientText className="text-3xl font-bold" text="Gradient Text" />
+      <GradientText className="text-3xl font-bold" text="Gradient Text" neon />
+      <div className="g-container bg-black!"></div>
+      <ClientIsolate>
+        <ClipPathWrapper>
+          <img
+            className="w-full h-auto"
+            src="https://api.xsot.cn/bing?jump=true"
+          />
+        </ClipPathWrapper>
+      </ClientIsolate>
+
+      <PressEffect>
+        <RippleEffect>
+          <Button>RippleEffect</Button>
+        </RippleEffect>
+      </PressEffect>
     </div>
   );
 }

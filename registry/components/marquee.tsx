@@ -2,7 +2,16 @@ import { ComponentPropsWithoutRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
-export function Marquee({
+type MarqueeProps = ComponentPropsWithoutRef<'div'> & {
+  className?: string;
+  reverse?: boolean;
+  pauseOnHover?: boolean;
+  children: React.ReactNode;
+  vertical?: boolean;
+  repeat?: number;
+};
+
+function Marquee({
   className,
   reverse = false,
   pauseOnHover = false,
@@ -10,14 +19,7 @@ export function Marquee({
   vertical = false,
   repeat = 4,
   ...props
-}: ComponentPropsWithoutRef<'div'> & {
-  className?: string;
-  reverse?: boolean;
-  pauseOnHover?: boolean;
-  children: React.ReactNode;
-  vertical?: boolean;
-  repeat?: number;
-}) {
+}: MarqueeProps) {
   return (
     <div
       {...props}
@@ -49,3 +51,5 @@ export function Marquee({
     </div>
   );
 }
+
+export { Marquee, type MarqueeProps };

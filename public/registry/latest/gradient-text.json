@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "type": "registry:component",
+  "title": "gradient text",
+  "description": "gradient text by motion animate",
+  "files": [
+    {
+      "path": "registry/components/gradient-text.tsx",
+      "content": "'use client';\r\n\r\nimport * as React from 'react';\r\nimport { motion, type Transition } from 'motion/react';\r\n\r\ntype GradientTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {\r\n  text: string;\r\n  gradient?: string;\r\n  neon?: boolean;\r\n  transition?: Transition;\r\n};\r\n\r\nfunction GradientText({\r\n  text,\r\n  style,\r\n  gradient = 'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',\r\n  neon = false,\r\n  transition = { duration: 50, repeat: Infinity, ease: 'linear' },\r\n  ...props\r\n}: GradientTextProps) {\r\n  const baseStyle: React.CSSProperties = {\r\n    backgroundImage: gradient,\r\n    margin: 0,\r\n    color: 'transparent',\r\n    backgroundClip: 'text',\r\n    backgroundSize: '700% 100%',\r\n    backgroundPosition: '0% 0%'\r\n  };\r\n\r\n  return (\r\n    <span\r\n      data-slot=\"gradient-text\"\r\n      style={{ position: 'relative', display: 'inline-block', ...style }}\r\n      {...props}\r\n    >\r\n      <motion.span\r\n        style={baseStyle}\r\n        initial={{ backgroundPosition: '0% 0%' }}\r\n        animate={{ backgroundPosition: '500% 100%' }}\r\n        transition={transition}\r\n      >\r\n        {text}\r\n      </motion.span>\r\n\r\n      {neon && (\r\n        <motion.span\r\n          style={{\r\n            position: 'absolute',\r\n            top: 0,\r\n            left: 0,\r\n            mixBlendMode: 'plus-lighter',\r\n            filter: 'blur(8px)',\r\n            ...baseStyle\r\n          }}\r\n          initial={{ backgroundPosition: '0% 0%' }}\r\n          animate={{ backgroundPosition: '500% 100%' }}\r\n          transition={transition}\r\n        >\r\n          {text}\r\n        </motion.span>\r\n      )}\r\n    </span>\r\n  );\r\n}\r\n\r\nexport { GradientText, type GradientTextProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/gradient-text.tsx"
+    }
+  ]
+}

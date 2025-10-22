@@ -4,10 +4,8 @@ import { HTMLMotionProps } from 'motion/react';
 import { PropsWithChildren } from 'react';
 import { motion } from 'motion/react';
 
-export default function PressEffect({
-  children,
-  ...props
-}: HTMLMotionProps<'div'> & PropsWithChildren) {
+type PressEffectProps = HTMLMotionProps<'div'> & PropsWithChildren;
+function PressEffect({ children, ...props }: PressEffectProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
@@ -19,3 +17,4 @@ export default function PressEffect({
     </motion.div>
   );
 }
+export { PressEffect, type PressEffectProps };

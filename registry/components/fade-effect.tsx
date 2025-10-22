@@ -3,16 +3,19 @@
 import { HTMLMotionProps } from 'motion/react';
 import { PropsWithChildren } from 'react';
 import { motion } from 'motion/react';
-export default function FadeEffect({
+
+type FadeEffectProps = HTMLMotionProps<'div'> &
+  PropsWithChildren & {
+    delay?: number;
+    once?: boolean;
+  };
+
+function FadeEffect({
   children,
   delay = 0,
   once = true,
   ...props
-}: HTMLMotionProps<'div'> &
-  PropsWithChildren & {
-    delay?: number;
-    once?: boolean;
-  }) {
+}: FadeEffectProps) {
   const initial = {
     opacity: 0
   };
@@ -33,3 +36,5 @@ export default function FadeEffect({
     </motion.div>
   );
 }
+
+export { FadeEffect, type FadeEffectProps };

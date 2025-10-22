@@ -3,19 +3,20 @@
 import { HTMLMotionProps } from 'motion/react';
 import { PropsWithChildren } from 'react';
 import { motion } from 'motion/react';
+type SlideEffectProps = HTMLMotionProps<'div'> &
+  PropsWithChildren & {
+    from?: 'left' | 'right' | 'top' | 'bottom';
+    delay?: number;
+    once?: boolean;
+  };
 
-export default function SlideEffect({
+function SlideEffect({
   children,
   from = 'left',
   delay = 0,
   once = true,
   ...props
-}: HTMLMotionProps<'div'> &
-  PropsWithChildren & {
-    from?: 'left' | 'right' | 'top' | 'bottom';
-    delay?: number;
-    once?: boolean;
-  }) {
+}: SlideEffectProps) {
   const initial = {
     x: from === 'left' ? '-100%' : from === 'right' ? '100%' : 0,
     y: from === 'top' ? '-100%' : from === 'bottom' ? '100%' : 0,
@@ -38,3 +39,5 @@ export default function SlideEffect({
     </motion.div>
   );
 }
+
+export { SlideEffect, type SlideEffectProps };
