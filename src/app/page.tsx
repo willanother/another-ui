@@ -47,7 +47,7 @@ export default function Home() {
           <Button>RippleEffect</Button>
         </RippleEffect>
       </PressEffect>
-      <BoxReveal className="[--box-color:red]">
+      <BoxReveal className="[--box-color:red]" delay={1}>
         <GradientText className="text-3xl font-bold" text="Gradient Text" />
       </BoxReveal>
     </div>
