@@ -31,14 +31,12 @@ export default function Home() {
       <GradientText className="text-3xl font-bold" text="Gradient Text" />
       <GradientText className="text-3xl font-bold" text="Gradient Text" neon />
       <div className="g-container bg-black!"></div>
-      {/* eslint-disable-next-line */}
       <img
         className="w-full h-auto [clip-path:path('M100_0L200_100L100_200L0_100Z')]"
         src="https://api.xsot.cn/bing?jump=true"
       />
       <IsolateClient>
         <ClipPathWrapper>
-          {/* eslint-disable-next-line */}
           <img
             className="w-full h-auto"
             src="https://api.xsot.cn/bing?jump=true"
@@ -51,7 +49,6 @@ export default function Home() {
         </RippleEffect>
       </PressEffect>
       <BlurEffect once={false}>
-        {/* eslint-disable-next-line */}
         <img
           className="w-full h-auto"
           src="https://api.xsot.cn/bing?jump=true"
