@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button';
 import MarqueeDemo from './marquee-demo';
 import { GradientText } from '$/registry/components/gradient-text';
 import { ClipPathWrapper } from '$/registry/components/clip-path-wrapper';
-import { ClientIsolate } from '$/registry/components/client-isolate';
+import { IsolateClient } from '$/registry/components/isolate-client';
 import { RippleEffect } from '$/registry/components/ripple-effect';
-import { BoxReveal } from '$/registry/components/box-reveal';
+import { RevealBox } from '$/registry/components/reveal-box';
+import { BeamBorder } from '$/registry/components/beam-border';
+import { BorderShine } from '$/registry/components/shine-border';
+import { BlurEffect } from '$/registry/components/blur-effect';
 
 export default function Home() {
   return (
@@ -33,7 +36,7 @@ export default function Home() {
         className="w-full h-auto [clip-path:path('M100_0L200_100L100_200L0_100Z')]"
         src="https://api.xsot.cn/bing?jump=true"
       />
-      <ClientIsolate>
+      <IsolateClient>
         <ClipPathWrapper>
           {/* eslint-disable-next-line */}
           <img
@@ -41,15 +44,32 @@ export default function Home() {
             src="https://api.xsot.cn/bing?jump=true"
           />
         </ClipPathWrapper>
-      </ClientIsolate>
+      </IsolateClient>
       <PressEffect>
         <RippleEffect>
           <Button>RippleEffect</Button>
         </RippleEffect>
       </PressEffect>
-      <BoxReveal className="[--box-color:red]" delay={1}>
+      <BlurEffect once={false}>
+        {/* eslint-disable-next-line */}
+        <img
+          className="w-full h-auto"
+          src="https://api.xsot.cn/bing?jump=true"
+        />
+      </BlurEffect>
+
+      <RevealBox className="[--box-color:red]" delay={0.2}>
         <GradientText className="text-3xl font-bold" text="Gradient Text" />
-      </BoxReveal>
+      </RevealBox>
+      <div className="w-96 h-80 bg-white shadow-2xl rounded-2xl relative">
+        <BeamBorder borderWidth={2} size={200} />
+      </div>
+      <div className="w-96 h-80 bg-white shadow-2xl rounded-2xl relative">
+        <BorderShine
+          borderWidth={2}
+          shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
+        />
+      </div>
     </div>
   );
 }

@@ -75,6 +75,20 @@
       }
     },
     {
+      "name": "blur-effect",
+      "type": "registry:component",
+      "title": "ripple effect",
+      "description": "fade effect by motion animate",
+      "dependencies": ["motion@^12"],
+      "files": [
+        {
+          "path": "registry/components/blur-effect.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/blur-effect.tsx"
+        }
+      ]
+    },
+    {
       "name": "marquee",
       "type": "registry:component",
       "title": "marquee",
@@ -126,15 +140,15 @@
       ]
     },
     {
-      "name": "client-isolate",
+      "name": "isolate-client",
       "type": "registry:component",
-      "title": "client isolate",
-      "description": "client isolate component",
+      "title": "isolate client",
+      "description": "isolate client react component",
       "files": [
         {
-          "path": "registry/components/client-isolate.tsx",
+          "path": "registry/components/isolate-client.tsx",
           "type": "registry:component",
-          "target": "src/components/another-ui/client-isolate.tsx"
+          "target": "src/components/another-ui/isolate-client.tsx"
         }
       ]
     },
@@ -153,18 +167,63 @@
       ]
     },
     {
-      "name": "box-reveal",
+      "name": "reveal-box",
       "type": "registry:component",
-      "title": "box reveal",
-      "description": "box reveal by motion animate",
+      "title": "reveal box",
+      "description": "reveal box by motion animate",
       "dependencies": ["motion@^12"],
       "files": [
         {
-          "path": "registry/components/box-reveal.tsx",
+          "path": "registry/components/reveal-box.tsx",
           "type": "registry:component",
-          "target": "src/components/another-ui/box-reveal.tsx"
+          "target": "src/components/another-ui/reveal-box.tsx"
         }
       ]
+    },
+    {
+      "name": "beam-border",
+      "type": "registry:component",
+      "title": "beam border",
+      "description": "beam border by motion animate",
+      "dependencies": ["motion@^12"],
+      "files": [
+        {
+          "path": "registry/components/beam-border.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/beam-border.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border",
+      "type": "registry:component",
+      "title": "shine border",
+      "description": "shine border by css",
+      "files": [
+        {
+          "path": "registry/components/shine-border.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/shine-border.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-shine": "shine-border var(--duration) infinite linear"
+        }
+      },
+      "css": {
+        "@keyframes shine-border": {
+          "from": {
+            "background-position": "0% 0%"
+          },
+          "50%": {
+            "background-position": "100% 100%"
+          },
+          "to": {
+            "background-position": "0% 0%"
+          }
+        }
+      }
     }
   ]
 }

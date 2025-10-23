@@ -1,11 +1,11 @@
 'use client';
 
 import { PropsWithChildren, useEffect, useState } from 'react';
-type ClientIsolateProps = {
+type IsolateClientProps = {
   suspense?: React.ReactNode;
 } & PropsWithChildren;
 
-function ClientIsolate({ children, suspense }: ClientIsolateProps) {
+function IsolateClient({ children, suspense }: IsolateClientProps) {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
@@ -13,4 +13,4 @@ function ClientIsolate({ children, suspense }: ClientIsolateProps) {
   return isClient ? children : suspense;
 }
 
-export { ClientIsolate, type ClientIsolateProps };
+export { IsolateClient, type IsolateClientProps };

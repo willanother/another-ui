@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-effect",
+  "type": "registry:component",
+  "title": "ripple effect",
+  "description": "fade effect by motion animate",
+  "dependencies": [
+    "motion@^12"
+  ],
+  "files": [
+    {
+      "path": "registry/components/blur-effect.tsx",
+      "content": "'use client';\r\n\r\nimport { HTMLMotionProps } from 'motion/react';\r\nimport { PropsWithChildren } from 'react';\r\nimport { motion } from 'motion/react';\r\nimport { cn } from '@/lib/utils';\r\n\r\ntype BlurEffectProps = HTMLMotionProps<'div'> &\r\n  PropsWithChildren & {\r\n    delay?: number;\r\n    once?: boolean;\r\n    size?: number;\r\n  };\r\n\r\nfunction BlurEffect({\r\n  children,\r\n  delay = 0.2,\r\n  once = true,\r\n  className,\r\n  size = 8,\r\n  ...props\r\n}: BlurEffectProps) {\r\n  const initial = {\r\n    filter: `blur(${size}px)`\r\n  };\r\n  const end = {\r\n    filter: 'none'\r\n  };\r\n  return (\r\n    <motion.div\r\n      className={cn('overflow-hidden', className)}\r\n      initial={initial}\r\n      transition={{ type: 'spring', stiffness: 400, damping: 17, delay }}\r\n      whileInView={end}\r\n      viewport={{ once }}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </motion.div>\r\n  );\r\n}\r\n\r\nexport { BlurEffect, type BlurEffectProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/blur-effect.tsx"
+    }
+  ]
+}

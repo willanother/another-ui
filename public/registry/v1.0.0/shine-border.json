@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shine-border",
+  "type": "registry:component",
+  "title": "shine border",
+  "description": "shine border by css",
+  "files": [
+    {
+      "path": "registry/components/shine-border.tsx",
+      "content": "'use client';\r\n\r\nimport * as React from 'react';\r\n\r\nimport { cn } from '@/lib/utils';\r\n\r\ntype BorderShineProps = {\r\n  /**\r\n   * Width of the border in pixels\r\n   * @default 1\r\n   */\r\n  borderWidth?: number;\r\n  /**\r\n   * Duration of the animation in seconds\r\n   * @default 14\r\n   */\r\n  duration?: number;\r\n  /**\r\n   * Color of the border, can be a single color or an array of colors\r\n   * @default \"#000000\"\r\n   */\r\n  shineColor?: string | string[];\r\n} & React.HTMLAttributes<HTMLDivElement>;\r\n\r\n/**\r\n * Shine Border\r\n *\r\n * An animated background border effect component with configurable properties.\r\n */ function BorderShine({\r\n  borderWidth = 1,\r\n  duration = 14,\r\n  shineColor = '#000000',\r\n  className,\r\n  style,\r\n  ...props\r\n}: BorderShineProps) {\r\n  return (\r\n    <div\r\n      style={\r\n        {\r\n          '--border-width': `${borderWidth}px`,\r\n          '--duration': `${duration}s`,\r\n          backgroundImage: `radial-gradient(transparent,transparent, ${\r\n            Array.isArray(shineColor) ? shineColor.join(',') : shineColor\r\n          },transparent,transparent)`,\r\n          backgroundSize: '300% 300%',\r\n          mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,\r\n          WebkitMask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,\r\n          WebkitMaskComposite: 'xor',\r\n          maskComposite: 'exclude',\r\n          padding: 'var(--border-width)',\r\n          ...style\r\n        } as React.CSSProperties\r\n      }\r\n      className={cn(\r\n        'motion-safe:animate-shine pointer-events-none absolute inset-0 size-full rounded-[inherit] will-change-[background-position]',\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\nexport { BorderShine, type BorderShineProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/shine-border.tsx"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-shine": "shine-border var(--duration) infinite linear"
+    }
+  },
+  "css": {
+    "@keyframes shine-border": {
+      "from": {
+        "background-position": "0% 0%"
+      },
+      "50%": {
+        "background-position": "100% 100%"
+      },
+      "to": {
+        "background-position": "0% 0%"
+      }
+    }
+  }
+}

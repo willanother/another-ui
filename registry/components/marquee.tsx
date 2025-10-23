@@ -24,7 +24,7 @@ function Marquee({
     <div
       {...props}
       className={cn(
-        '[--duration:20s] [--gap:1rem] group flex gap-(--gap) overflow-hidden',
+        '[--duration:20s] [--gap:1rem] group flex gap-(--gap)',
         vertical ? 'flex-col' : 'flex-row',
         className
       )}

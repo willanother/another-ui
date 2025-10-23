@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { motion, useAnimation, Variants } from 'motion/react';
 import React, { useEffect, useState } from 'react';
 
-type BoxRevealProps = {
+type RevealBoxProps = {
   children: React.ReactNode;
   className?: string;
   duration?: number;
@@ -14,7 +14,7 @@ type BoxRevealProps = {
   delay?: number;
 };
 
-function BoxReveal({
+function RevealBox({
   children,
   className,
   duration,
@@ -22,7 +22,7 @@ function BoxReveal({
   once = false,
   from = 'bottom',
   delay = 0
-}: BoxRevealProps) {
+}: RevealBoxProps) {
   const mainControls = useAnimation();
   const [mainVariants, setMainVariants] = useState<Variants>();
   const slideControls = useAnimation();
@@ -122,4 +122,4 @@ function BoxReveal({
   );
 }
 
-export { BoxReveal, type BoxRevealProps };
+export { RevealBox, type RevealBoxProps };
