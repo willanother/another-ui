@@ -10,6 +10,7 @@ import { RevealBox } from '$/registry/components/reveal-box';
 import { BeamBorder } from '$/registry/components/beam-border';
 import { BorderShine } from '$/registry/components/shine-border';
 import { BlurEffect } from '$/registry/components/blur-effect';
+import { AnimatedTheme } from '$/registry/components/animate-theme';
 
 export default function Home() {
   return (
@@ -48,12 +49,14 @@ export default function Home() {
           <Button>RippleEffect</Button>
         </RippleEffect>
       </PressEffect>
-      <BlurEffect once={false}>
+      <BlurEffect>
         <img
           className="w-full h-auto"
           src="https://api.xsot.cn/bing?jump=true"
         />
       </BlurEffect>
+
+      <AnimatedTheme duration={30}/>
 
       <RevealBox className="[--box-color:red]" delay={0.2}>
         <GradientText className="text-3xl font-bold" text="Gradient Text" />

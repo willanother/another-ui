@@ -26,7 +26,7 @@
  }
 
  @keyframes rippling {
-	from {
+ 	from {
  		opacity: 1;
  	}
 
@@ -62,4 +62,10 @@
  	&:hover {
  		clip-path: circle(100vw at 44px 44px);
  	}
+ }
+
+ ::view-transition-old(root),
+ ::view-transition-new(root) {
+ 	animation: "none";
+ 	mix-blend-mode: normal;
  }

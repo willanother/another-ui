@@ -19,7 +19,7 @@ function RevealBox({
   className,
   duration,
   boxColor = '#5046e6',
-  once = false,
+  once = true,
   from = 'bottom',
   delay = 0
 }: RevealBoxProps) {
