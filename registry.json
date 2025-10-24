@@ -260,6 +260,32 @@
           "target": "src/components/another-ui/text-mask.tsx"
         }
       ]
+    },
+		{
+      "name": "android-view",
+      "type": "registry:component",
+      "title": "android view",
+      "description": "android view",
+      "files": [
+        {
+          "path": "registry/components/android-view.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/android-view.tsx"
+        }
+      ]
+    },
+		{
+      "name": "iphone-view",
+      "type": "registry:component",
+      "title": "iphone view",
+      "description": "iphone view",
+      "files": [
+        {
+          "path": "registry/components/iphone-view.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/iphone-view.tsx"
+        }
+      ]
     }
   ]
 }

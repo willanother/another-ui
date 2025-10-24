@@ -13,6 +13,8 @@ import { BlurEffect } from '$/registry/components/blur-effect';
 import ThemeSwitch from './theme-switch';
 import ThemeButton from './theme-button';
 import { TextMask } from '$/registry/components/text-mask';
+import { AndroidView } from '$/registry/components/android-view';
+import { IphoneView } from '$/registry/components/iphone-view';
 
 export default function Home() {
   return (
@@ -74,12 +76,18 @@ export default function Home() {
         />
       </div>
 
-      <TextMask text="Text Mask" fontSize={100/9*1.5}>
+      <TextMask text="Text Mask" fontSize={(100 / 9) * 1.5}>
         <img
           className="w-full h-auto"
           src="https://api.xsot.cn/bing?jump=true"
         />
       </TextMask>
+      <AndroidView>
+        <iframe className="size-full" src="https://anthilltech.taotaozn.com" />
+      </AndroidView>
+      <IphoneView>
+        <iframe className="size-full" src="https://anthilltech.taotaozn.com" />
+      </IphoneView>
     </div>
   );
 }
