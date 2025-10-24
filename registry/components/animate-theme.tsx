@@ -1,88 +1,72 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { ElementType, useRef } from 'react';
 import { flushSync } from 'react-dom';
-
 import { cn } from '@/lib/utils';
 
-interface AnimatedThemeProps extends React.ComponentPropsWithoutRef<'button'> {
+interface AnimateThemeProps extends React.ComponentPropsWithoutRef<'div'> {
   duration?: number;
+  toggle?: () => void;
+  children: React.ReactNode;
+  as?: ElementType;
 }
 
-function AnimatedTheme({
+function AnimateTheme({
   className,
-  duration = 400,
+  duration = 500,
+  toggle = () => {},
+  children,
+  as: Component = 'div',
   ...props
-}: AnimatedThemeProps) {
-  const [isDark, setIsDark] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+}: AnimateThemeProps) {
+  const ref = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const updateTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    };
+  const toggleTheme = async () => {
+    if (!ref.current) return;
 
-    updateTheme();
-
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const toggleTheme = useCallback(async () => {
-    if (!buttonRef.current) return;
-
-    await document.startViewTransition(() => {
-      flushSync(() => {
-        const newTheme = !isDark;
-        setIsDark(newTheme);
-        document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-      });
-    }).ready;
-
-    const { top, left, width, height } =
-      buttonRef.current.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-    const maxRadius = Math.hypot(
-      Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top)
-    );
-
-    console.log('maxRadius', maxRadius);
-    console.log('x y', x, y);
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`
-        ]
-      },
-      {
-        duration,
-        easing: 'ease-in-out',
-        pseudoElement: '::view-transition-new(root)'
-      }
-    );
-  }, [isDark, duration]);
+    if (!document.startViewTransition) {
+      console.warn('View transitions are not supported');
+      toggle();
+      return;
+    } else {
+      await document.startViewTransition(() => {
+        flushSync(() => {
+          toggle();
+        });
+      }).ready;
+      const { top, left, width, height } = ref.current.getBoundingClientRect();
+      const x = left + width / 2;
+      const y = top + height / 2;
+      const maxRadius = Math.hypot(
+        Math.max(left, window.innerWidth - left),
+        Math.max(top, window.innerHeight - top)
+      );
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${maxRadius}px at ${x}px ${y}px)`
+          ]
+        },
+        {
+          duration,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      );
+    }
+  };
 
   return (
-    <button
-      ref={buttonRef}
+    <Component
+      ref={ref}
       onClick={toggleTheme}
       className={cn(className)}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
-      <span className="sr-only">Toggle theme</span>
-    </button>
+      {children}
+    </Component>
   );
 }
 
-export { AnimatedTheme, type AnimatedThemeProps };
+export { AnimateTheme, type AnimateThemeProps };

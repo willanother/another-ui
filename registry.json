@@ -224,6 +224,42 @@
           }
         }
       }
+    },
+    {
+      "name": "animate-theme",
+      "type": "registry:component",
+      "title": "animate theme",
+      "description": "animate theme view transition by web api",
+      "files": [
+        {
+          "path": "registry/components/animate-theme.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/animate-theme.tsx"
+        }
+      ],
+      "css": {
+        "::view-transition-image-pair(root)": {
+          "isolation": "auto"
+        },
+        "::view-transition-old(root), ::view-transition-new(root)": {
+          "animation": "none",
+          "mix-blend-mode": "normal",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "text-mask",
+      "type": "registry:component",
+      "title": "text mask",
+      "description": "text mask by svg clip path",
+      "files": [
+        {
+          "path": "registry/components/text-mask.tsx",
+          "type": "registry:component",
+          "target": "src/components/another-ui/text-mask.tsx"
+        }
+      ]
     }
   ]
 }

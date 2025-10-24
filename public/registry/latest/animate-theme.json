@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animate-theme",
+  "type": "registry:component",
+  "title": "animate theme",
+  "description": "animate theme view transition by web api",
+  "files": [
+    {
+      "path": "registry/components/animate-theme.tsx",
+      "content": "'use client';\r\n\r\nimport { ElementType, useRef } from 'react';\r\nimport { flushSync } from 'react-dom';\r\nimport { cn } from '@/lib/utils';\r\n\r\ninterface AnimateThemeProps extends React.ComponentPropsWithoutRef<'div'> {\r\n  duration?: number;\r\n  toggle?: () => void;\r\n  children: React.ReactNode;\r\n  as?: ElementType;\r\n}\r\n\r\nfunction AnimateTheme({\r\n  className,\r\n  duration = 500,\r\n  toggle = () => {},\r\n  children,\r\n  as: Component = 'div',\r\n  ...props\r\n}: AnimateThemeProps) {\r\n  const ref = useRef<HTMLElement>(null);\r\n\r\n  const toggleTheme = async () => {\r\n    if (!ref.current) return;\r\n\r\n    if (!document.startViewTransition) {\r\n      console.warn('View transitions are not supported');\r\n      toggle();\r\n      return;\r\n    } else {\r\n      await document.startViewTransition(() => {\r\n        flushSync(() => {\r\n          toggle();\r\n        });\r\n      }).ready;\r\n      const { top, left, width, height } = ref.current.getBoundingClientRect();\r\n      const x = left + width / 2;\r\n      const y = top + height / 2;\r\n      const maxRadius = Math.hypot(\r\n        Math.max(left, window.innerWidth - left),\r\n        Math.max(top, window.innerHeight - top)\r\n      );\r\n      document.documentElement.animate(\r\n        {\r\n          clipPath: [\r\n            `circle(0px at ${x}px ${y}px)`,\r\n            `circle(${maxRadius}px at ${x}px ${y}px)`\r\n          ]\r\n        },\r\n        {\r\n          duration,\r\n          easing: 'ease-in-out',\r\n          pseudoElement: '::view-transition-new(root)'\r\n        }\r\n      );\r\n    }\r\n  };\r\n\r\n  return (\r\n    <Component\r\n      ref={ref}\r\n      onClick={toggleTheme}\r\n      className={cn(className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </Component>\r\n  );\r\n}\r\n\r\nexport { AnimateTheme, type AnimateThemeProps };\r\n",
+      "type": "registry:component",
+      "target": "src/components/another-ui/animate-theme.tsx"
+    }
+  ],
+  "css": {
+    "::view-transition-image-pair(root)": {
+      "isolation": "auto"
+    },
+    "::view-transition-old(root), ::view-transition-new(root)": {
+      "animation": "none",
+      "mix-blend-mode": "normal",
+      "display": "block"
+    }
+  }
+}

@@ -10,7 +10,9 @@ import { RevealBox } from '$/registry/components/reveal-box';
 import { BeamBorder } from '$/registry/components/beam-border';
 import { BorderShine } from '$/registry/components/shine-border';
 import { BlurEffect } from '$/registry/components/blur-effect';
-import { AnimatedTheme } from '$/registry/components/animate-theme';
+import ThemeSwitch from './theme-switch';
+import ThemeButton from './theme-button';
+import { TextMask } from '$/registry/components/text-mask';
 
 export default function Home() {
   return (
@@ -56,20 +58,28 @@ export default function Home() {
         />
       </BlurEffect>
 
-      <AnimatedTheme duration={30}/>
+      <ThemeSwitch />
+      <ThemeButton />
 
       <RevealBox className="[--box-color:red]" delay={0.2}>
         <GradientText className="text-3xl font-bold" text="Gradient Text" />
       </RevealBox>
-      <div className="w-96 h-80 bg-white shadow-2xl rounded-2xl relative">
+      <div className="w-96 h-80 bg-background shadow-gray-500 shadow-2xl rounded-2xl relative">
         <BeamBorder borderWidth={2} size={200} />
       </div>
-      <div className="w-96 h-80 bg-white shadow-2xl rounded-2xl relative">
+      <div className="w-96 h-80 bg-background shadow-gray-500 shadow-2xl rounded-2xl relative">
         <BorderShine
           borderWidth={2}
           shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
         />
       </div>
+
+      <TextMask text="Text Mask" fontSize={100/9*1.5}>
+        <img
+          className="w-full h-auto"
+          src="https://api.xsot.cn/bing?jump=true"
+        />
+      </TextMask>
     </div>
   );
 }
